@@ -1,6 +1,6 @@
 package co.za.graphql.project.graphql.business.mutation.implementation;
 
-import co.za.graphql.project.graphql.business.mutation.AuthorService;
+import co.za.graphql.project.graphql.business.mutation.AuthorMutationService;
 import co.za.graphql.project.graphql.model.Author;
 import co.za.graphql.project.graphql.repository.AuthorRepository;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class AuthorMutationImpl implements GraphQLMutationResolver, AuthorService {
+public class AuthorMutationImpl implements GraphQLMutationResolver, AuthorMutationService {
 
     @Autowired
     private AuthorRepository authorRepository;
