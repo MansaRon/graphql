@@ -1,10 +1,14 @@
 package co.za.graphql.project.graphql.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@Builder
+@NoArgsConstructor
 @Table(name = "Author")
 public class Author {
     @Id
