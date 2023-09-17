@@ -4,13 +4,14 @@ import co.za.graphql.project.graphql.business.mutation.TaskMutationService;
 import co.za.graphql.project.graphql.model.Task;
 import co.za.graphql.project.graphql.repository.TaskRepository;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class TaskMutationImpl implements TaskMutationService, GraphQLMutationResolver {
 
     @Autowired
