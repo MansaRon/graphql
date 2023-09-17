@@ -13,7 +13,7 @@ extend type Query {
 
 extend type Mutation {
   createTask(title: String!, description: String): Task!
-  updateTask(id: ID!, title: String, description: String, completed: Boolean): Task
+  updateTask(id: ID!, title: String, description: String, completed: Boolean): Task!
   deleteTask(id: ID!): ID
-  markTaskAsCompleted(id: ID!): Task
+  markTaskAsCompleted(id: ID!): Task!
 }
