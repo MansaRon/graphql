@@ -5,13 +5,23 @@ type Task {
   completed: Boolean!
 }
 
+type Author {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  login: String!
+  password: String!
+}
+
 type Query {
   getAllTasks: [Task!]!
 }
 
 type Mutation {
-  createTask(title: String!, description: String, completed: Boolean): Task!
+  createTask(title: String!, description: String, completed: Boolean): Task
   updateTask(id: ID!, title: String, description: String, completed: Boolean): Task!
   deleteTask(id: ID!): Boolean
   markTaskAsCompleted(id: ID!): Boolean!
+  createAuthor(firstName: String!, lastName: String!, login: String!, password: String!): Author!
+  loginAuthor(login: String!, password: String!): Author!
 }
