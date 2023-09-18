@@ -41,4 +41,6 @@ public class TaskController {
     public boolean deleteTask(@Argument long id) {
         return taskMutationService.deleteTask(id);
     }
+
+
 }
