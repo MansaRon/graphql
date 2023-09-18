@@ -53,7 +53,10 @@ public class TaskMutationImpl implements TaskMutationService, GraphQLMutationRes
     @Override
     public boolean markTaskAsCompleted(long id) {
         Task task = taskRepository.getById(id);
+        task.setCompleted(!task.isCompleted());
+        taskRepository.save(task);
         return task.isCompleted();
     }
+
 
 }
