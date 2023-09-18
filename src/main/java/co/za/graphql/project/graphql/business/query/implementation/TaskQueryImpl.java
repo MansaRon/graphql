@@ -6,11 +6,12 @@ import co.za.graphql.project.graphql.repository.TaskRepository;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Component
 @AllArgsConstructor
 public class TaskQueryImpl implements GraphQLQueryResolver, TaskQueryService {
 

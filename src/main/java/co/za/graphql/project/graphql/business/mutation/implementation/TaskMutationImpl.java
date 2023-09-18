@@ -6,11 +6,12 @@ import co.za.graphql.project.graphql.repository.TaskRepository;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
+@Component
 @AllArgsConstructor
 public class TaskMutationImpl implements TaskMutationService, GraphQLMutationResolver {
 
