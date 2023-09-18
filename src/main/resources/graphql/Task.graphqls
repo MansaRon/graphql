@@ -15,7 +15,7 @@ type Author {
 
 type Query {
   getAllTasks: [Task!]!
-  getTasksByStatus(): [Task!]!
+  getTasksByStatus(completed: Boolean): [Task!]!
 }
 
 type Mutation {
