@@ -42,5 +42,8 @@ public class TaskController {
         return taskMutationService.deleteTask(id);
     }
 
-
+    @MutationMapping
+    public boolean markTaskAsCompleted(@Argument long id) {
+        return taskMutationService.markTaskAsCompleted(id);
+    }
 }
