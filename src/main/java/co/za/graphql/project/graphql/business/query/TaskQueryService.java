@@ -8,4 +8,6 @@ public interface TaskQueryService {
 
     List<Task> getAllTasks();
 
+    List<Task> getAllTasksByStatus(boolean completed);
+
 }

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Component
 @AllArgsConstructor
@@ -21,6 +23,18 @@ public class TaskQueryImpl implements GraphQLQueryResolver, TaskQueryService {
     @Override
     public List<Task> getAllTasks() {
         return taskRepository.findAll();
+    }
+
+    @Override
+    public List<Task> getAllTasksByStatus(boolean completed) {
+        List<Task> tasks = taskRepository.findAll();
+
+        if (completed) {
+            return tasks.stream().filter(Task::isCompleted).collect(Collectors.toList());
+        }
+        else {
+            return tasks.stream().filter(task -> !task.isCompleted()).collect(Collectors.toList());
+        }
     }
 
 }

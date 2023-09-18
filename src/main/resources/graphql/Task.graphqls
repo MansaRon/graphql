@@ -15,6 +15,7 @@ type Author {
 
 type Query {
   getAllTasks: [Task!]!
+  getTasksByStatus(): [Task!]!
 }
 
 type Mutation {
