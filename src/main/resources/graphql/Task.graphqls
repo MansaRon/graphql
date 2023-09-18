@@ -5,11 +5,11 @@ type Task {
   completed: Boolean!
 }
 
-extend type Query {
+type Query {
   getAllTasks: [Task!]!
 }
 
-extend type Mutation {
+type Mutation {
   createTask(title: String!, description: String, completed: Boolean): Task!
   updateTask(id: ID!, title: String, description: String, completed: Boolean): Task!
   deleteTask(id: ID!): Boolean
