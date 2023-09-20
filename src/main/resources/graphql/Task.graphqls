@@ -5,12 +5,18 @@ type Task {
   completed: Boolean!
 }
 
+enum UserRole {
+  USER
+  ADMIN
+}
+
 type Author {
   id: ID!
   firstName: String!
   lastName: String!
   login: String!
   password: String!
+  roles: [UserRole]!
 }
 
 type Query {
@@ -23,6 +29,6 @@ type Mutation {
   updateTask(id: ID!, title: String, description: String, completed: Boolean): Task!
   deleteTask(id: ID!): Boolean
   markTaskAsCompleted(id: ID!): Boolean!
-  createAuthor(firstName: String!, lastName: String!, login: String!, password: String!): Author!
+  createAuthor(firstName: String!, lastName: String!, login: String!, password: String!, roles: [UserRole!]): Author!
   loginAuthor(login: String!, password: String!): Author!
 }

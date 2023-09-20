@@ -1,9 +1,11 @@
 package co.za.graphql.project.graphql.model;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -25,4 +27,13 @@ public class Author {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    private Set<EROLES> roles = new HashSet<>();
+
+    public void addRole(EROLES role) {
+        this.roles.clear();
+        if (roles != null) {
+            this.roles.add(role);
+        }
+    }
 }
