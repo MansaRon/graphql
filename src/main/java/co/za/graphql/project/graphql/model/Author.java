@@ -28,6 +28,8 @@ public class Author {
     @Column(name = "password", nullable = false)
     private String password;
 
+    private String token;
+
     private Set<EROLES> roles = new HashSet<>();
 
     public void addRole(EROLES role) {

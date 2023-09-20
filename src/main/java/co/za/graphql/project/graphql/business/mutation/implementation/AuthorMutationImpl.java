@@ -1,6 +1,7 @@
 package co.za.graphql.project.graphql.business.mutation.implementation;
 
 import co.za.graphql.project.graphql.business.mutation.AuthorMutationService;
+import co.za.graphql.project.graphql.config.UserAuthProvider;
 import co.za.graphql.project.graphql.model.Author;
 import co.za.graphql.project.graphql.model.EROLES;
 import co.za.graphql.project.graphql.model.Role;
@@ -8,6 +9,7 @@ import co.za.graphql.project.graphql.repository.AuthorRepository;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
@@ -19,13 +21,20 @@ public class AuthorMutationImpl implements GraphQLMutationResolver, AuthorMutati
     @Autowired
     private final AuthorRepository authorRepository;
 
+    @Autowired
+    private final UserAuthProvider userAuthProvider;
+
+    @Autowired
+    private final PasswordEncoder passwordEncoder;
+
+
     @Override
     public Author createAuthor(String firstName, String lastName, String login, String password, Set<EROLES> roles) {
         Author author = new Author();
         author.setFirstName(firstName);
         author.setLastName(lastName);
         author.setLogin(login);
-        author.setPassword(password);
+        author.setPassword(passwordEncoder.encode(password));
         author.setRoles(roles);
 
         authorRepository.save(author);
@@ -35,7 +44,7 @@ public class AuthorMutationImpl implements GraphQLMutationResolver, AuthorMutati
     @Override
     public Author loginAuthor(String login, String password) throws Exception {
         Author author = authorRepository.findByLogin(login);
-
+        userAuthProvider.createToken(author);
         if (author != null && author.getPassword().equals(password)) {
             return author;
         }

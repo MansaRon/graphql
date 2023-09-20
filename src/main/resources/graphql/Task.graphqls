@@ -17,6 +17,7 @@ type Author {
   login: String!
   password: String!
   roles: [UserRole]!
+  token: String
 }
 
 type Query {
