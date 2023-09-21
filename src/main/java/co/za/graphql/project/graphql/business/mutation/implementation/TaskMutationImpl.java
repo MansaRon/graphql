@@ -46,8 +46,14 @@ public class TaskMutationImpl implements TaskMutationService, GraphQLMutationRes
 
     @Override
     public boolean deleteTask(long id) {
-        taskRepository.deleteById(id);
-        return true;
+        Optional<Task> findTask = taskRepository.findById(id);
+        if (findTask.isPresent()) {
+            taskRepository.deleteById(id);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     @Override
